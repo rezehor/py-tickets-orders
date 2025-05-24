@@ -121,11 +121,6 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = ("id", "tickets", "created_at")
 
 
-class OrderCreateSerializer(OrderSerializer):
-    class Meta:
-        model = Order
-        fields = ("id", "tickets", "created_at")
-
     def create(self, validated_data):
         with transaction.atomic():
             tickets_data = validated_data.pop("tickets")
